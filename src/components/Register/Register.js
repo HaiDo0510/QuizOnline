@@ -1,6 +1,38 @@
 import React, { Component } from 'react';
+import * as API from '../../axios/auth/API_Register';
 
 class Register extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: "",
+            username: "",
+            password: ""
+        };
+    };
+
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const registerDto = {
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.password
+        };
+        API.api_register(registerDto);
+    };
+
+
+
     render() {
         return (
             <div className="modal fade" id="registerModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -16,14 +48,17 @@ class Register extends React.Component {
                                 <h4>Register</h4>
                             </div>
                             <div className="d-flex flex-column text-center">
-                                <form>
+                                <form onSubmit={this.handleSubmit}>
                                     <div className="form-group">
-                                        <input type="email" className="form-control" id="email2" placeholder="Your email address..." />
+                                        <input type="email" className="form-control" name='email' id="email2" onChange={this.handleInputChange} placeholder="Your Email address..." />
                                     </div>
                                     <div className="form-group">
-                                        <input type="password" className="form-control" id="password2" placeholder="Your password..." />
+                                        <input type="text" className="form-control" name='username' id="username2" onChange={this.handleInputChange} placeholder="Your Username..." />
                                     </div>
-                                    <button type="button" className="btn btn-info btn-block btn-round">Register</button>
+                                    <div className="form-group">
+                                        <input type="password" className="form-control" name='password' id="password2" onChange={this.handleInputChange} placeholder="Your Password..." />
+                                    </div>
+                                    <button type="submit" className="btn btn-info btn-block btn-round">Register</button>
                                 </form>
                             </div>
                         </div>

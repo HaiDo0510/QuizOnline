@@ -1,29 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
 import './components/Navbar/Navbar'
-import Navbar from './components/Navbar/Navbar';
-import Header from './components/Header/Header';
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from './pages/HomePage';
+import HomePageUser from './pages/HomePageUser';
+import HomePageAdmin from './pages/HomePageAdmin';
 import Footer from './components/Footer/Footer';
-import PageContent from './components/Content/PageContent';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <div>
-      {/* Navbar (sit on top) */}
-      <Navbar />
-      {/* Header */}
-      <Header />
-      {/* Login */}
-      <Login />
-      {/* Register */}
-      <Register />
-      {/* Page content */}
-      <PageContent />
-      {/* Footer */}
-      <Footer />
-    </div>
+    <BrowserRouter>
+
+      <Routes>
+        <Route path='/' element={<ToastContainer closeButton={false} position="top-right" />} />
+        <Route path='/user' element={<ToastContainer closeButton={false} position="top-right" />} />
+        <Route path='/admin' element={<ToastContainer closeButton={false} position="top-right" />} />
+      </Routes>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/user' element={<HomePageUser />} />
+        <Route path='/admin' element={<HomePageAdmin />} />
+      </Routes>
+      <Routes path="/">
+        <Route path='/' element={<Footer />} />
+        <Route path='/user' element={<Footer />} />
+        <Route path='/admin' element={<Footer />} />
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 

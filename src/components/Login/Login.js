@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Login extends React.Component {
     constructor(props) {
@@ -15,17 +16,33 @@ class Login extends React.Component {
         const name = target.name;
 
         this.setState({
-          [name]: value
+            [name]: value
         });
-      }
+    }
 
     handleSubmit = (event) => {
         alert('Giá trị đã được submit: '
-          + this.state.email + ' và '
-          + this.state.password
+            + this.state.email + ' và '
+            + this.state.password
         );
         event.preventDefault();
-      };
+        const login = {
+            email: this.state.email,
+            password: this.state.password
+        };
+
+        axios({
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': '*/*',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+            },
+            url: 'http://localhost:4000/api/theanh'
+        }).then(alert('OK'));
+    };
 
     render() {
         return (
