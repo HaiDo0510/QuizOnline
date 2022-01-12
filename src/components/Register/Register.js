@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as API from '../../axios/auth/API_Register';
+import * as API from '../../actions/API_Auth';
 
 class Register extends React.Component {
     constructor(props) {

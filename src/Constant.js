@@ -9,3 +9,4 @@ export const HEADER_API = {
 }
 
 export const API_REGISTER = 'http://localhost:8080/auth/register';
+export const API_LOGIN = 'http://localhost:8080/auth/login';

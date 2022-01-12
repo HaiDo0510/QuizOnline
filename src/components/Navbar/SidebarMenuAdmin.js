@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class SidebarMenuAdmin extends React.Component {
     render() {
@@ -7,7 +8,7 @@ class SidebarMenuAdmin extends React.Component {
                 {/* Top container */}
                 <div className="w3-bar w3-top w3-cyan w3-large" style={{ zIndex: 4 }}>
                     <button className="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onClick={w3_open}><i className="fa fa-bars" /> &nbsp;Menu</button>
-                    <span className="w3-bar-item w3-right">Logo</span>
+                    <Link to="/" className="w3-bar-item w3-right w3-button btn"><i className="fa fa-power-off"></i></Link>
                 </div>
                 {/* Sidebar/menu */}
                 <nav className="w3-sidebar w3-collapse w3-white w3-animate-left" style={{ zIndex: 3, width: '300px' }} id="mySidebar"><br />
@@ -29,12 +30,11 @@ class SidebarMenuAdmin extends React.Component {
                     <div className="w3-bar-block">
                         <a href="#" className="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onClick={w3_close} title="close menu"><i className="fa fa-remove fa-fw" />&nbsp; Close Menu</a>
                         <a href="#" className="w3-bar-item w3-button w3-padding w3-blue"><i className="fa fa-users fa-fw" />&nbsp; Overview</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-eye fa-fw" />&nbsp; Views</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-users fa-fw" />&nbsp; Traffic</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bullseye fa-fw" />&nbsp; Geo</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-diamond fa-fw" />&nbsp; Orders</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bell fa-fw" />&nbsp; News</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bank fa-fw" />&nbsp; General</a>
+                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-eye fa-fw" />&nbsp; User</a>
+                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-users fa-fw" />&nbsp; Course</a>
+                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bullseye fa-fw" />&nbsp; Subject</a>
+                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bell fa-fw" />&nbsp; Test</a>
+                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bank fa-fw" />&nbsp; Exam</a>
                         <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-history fa-fw" />&nbsp; History</a>
                         <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-cog fa-fw" />&nbsp; Settings</a><br /><br />
                     </div>
