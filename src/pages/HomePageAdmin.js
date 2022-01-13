@@ -15,7 +15,7 @@ class HomePageAdmin extends React.Component {
             // console.log(localStorage.getItem("accessToken"));
             // console.log(localStorage.getItem("roles"));
         } else {
-            window.location.href = '/';
+            // window.location.href = '/';
         }
     }
 

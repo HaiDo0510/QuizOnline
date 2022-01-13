@@ -13,19 +13,15 @@ function App() {
     <BrowserRouter>
 
       <Routes>
-        <Route path='/' element={<ToastContainer closeButton={false} position="top-right" />} />
-        <Route path='/user' element={<ToastContainer closeButton={false} position="top-right" />} />
-        <Route path='/admin' element={<ToastContainer closeButton={false} position="top-right" />} />
+        <Route path='/*' element={<ToastContainer closeButton={false} position="top-right" />} />
       </Routes>
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/user' element={<HomePageUser />} />
-        <Route path='/admin' element={<HomePageAdmin />} />
+        <Route path='user/*' element={<HomePageUser />} />
+        <Route path='admin/*' element={<HomePageAdmin />} />
       </Routes>
-      <Routes path="/">
-        <Route path='/' element={<Footer />} />
-        <Route path='/user' element={<Footer />} />
-        <Route path='/admin' element={<Footer />} />
+      <Routes>
+        <Route path='/*' element={<Footer />} />
       </Routes>
 
     </BrowserRouter>

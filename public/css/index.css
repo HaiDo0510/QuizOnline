@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+
 body {
   font-family: "Times New Roman", Georgia, Serif;
 }
@@ -38,8 +40,37 @@ body {
   padding: 0.3rem 0rem;
 }
 
-#icon-twitter, #icon-facebook, #icon-linkedin{
+#icon-twitter,
+#icon-facebook,
+#icon-linkedin {
   margin-left: 10px;
   margin-right: 10px;
 }
 
+.app {
+  background-color: #f8cc0a;
+  position: fixed;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 10%;
+  height: 50px;
+  top: 70px;
+  left: 87%;
+  padding-top: 2px;
+  border-radius: 10px;
+}
+
+.stopwatch-card {
+  font-family: "Quicksand", sans-serif;
+  border-radius: 10px;
+  font-size: 28px;
+  position: fixed;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 12%;
+  height: 60px;
+  top: 110px;
+  left: 92%;
+  transform: translate(-50%, -50%);
+  padding-top: 10px;
+}

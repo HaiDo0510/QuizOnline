@@ -90,7 +90,7 @@ class SidebarMenu extends React.Component {
                                 </a>
                                 <div id={item.title} className="w3-bar-block w3-hide w3-padding-large w3-medium">
                                     {item.subject.map((subItem,index) => (
-                                        <a href="#" key={index} className="w3-bar-item w3-button w3-hover-white">{subItem.title}</a>
+                                        <a href="#" key={index} className="btn w3-bar-item w3-button w3-hover-white font-weight-bold">{subItem.title}</a>
                                     ))} 
                                 </div>
                             </div>
