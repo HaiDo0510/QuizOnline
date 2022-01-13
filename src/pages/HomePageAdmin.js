@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
+import ListUser from '../components/Content/ListUser';
 import PageContentAdmin from '../components/Content/PageContentAdmin';
 import SidebarMenuAdmin from '../components/Navbar/SidebarMenuAdmin';
+import { Routes, Route } from 'react-router-dom';
+import AddUser from '../components/Content/AddUser';
 
 class HomePageAdmin extends React.Component {
 
@@ -26,9 +29,11 @@ class HomePageAdmin extends React.Component {
                     <SidebarMenuAdmin />
                     {/* !PAGE CONTENT! */}
                     <div className="w3-main" style={{ marginLeft: '300px', marginTop: '43px' }}>
-                        {/* Header */}
-                        <PageContentAdmin />
-                        {/* End page content */}
+                        <Routes>
+                            <Route path='' element={<PageContentAdmin />} />
+                            <Route path='listUser/*' element={<ListUser />} />
+                            <Route path='addUser/*' element={<AddUser />} />
+                        </Routes>
                     </div>
                 </div>
             </div>

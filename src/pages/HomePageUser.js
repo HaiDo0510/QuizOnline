@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import DoQuiz from '../components/Content/DoQuiz';

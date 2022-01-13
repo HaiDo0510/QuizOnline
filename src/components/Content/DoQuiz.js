@@ -128,22 +128,22 @@ class DoQuiz extends React.Component {
                             <p>The form below contains three radio buttons. The first option is checked by default, and the last option is disabled:</p>
                             <div className="form-check">
                                 <label className="form-check-label" htmlFor="radio1">
-                                    <input type="radio" className="form-check-input" id="radio1" name="optradio" defaultValue="option1" defaultChecked />A. {item.answer[0].title}
+                                    <input type="radio" className="form-check-input" id="radio1" name={index} defaultValue="option1" />A. {item.answer[0].title}
                                 </label>
                             </div>
                             <div className="form-check">
                                 <label className="form-check-label" htmlFor="radio2">
-                                    <input type="radio" className="form-check-input" id="radio2" name="optradio" defaultValue="option2" />B. {item.answer[1].title}
+                                    <input type="radio" className="form-check-input" id="radio2" name={index} defaultValue="option2" />B. {item.answer[1].title}
                                 </label>
                             </div>
                             <div className="form-check">
                                 <label className="form-check-label" htmlFor="radio2">
-                                    <input type="radio" className="form-check-input" id="radio2" name="optradio" defaultValue="option2" />C. {item.answer[2].title}
+                                    <input type="radio" className="form-check-input" id="radio2" name={index} defaultValue="option2" />C. {item.answer[2].title}
                                 </label>
                             </div>
                             <div className="form-check">
                                 <label className="form-check-label" htmlFor="radio2">
-                                    <input type="radio" className="form-check-input" id="radio2" name="optradio" defaultValue="option2" />D. {item.answer[3].title}
+                                    <input type="radio" className="form-check-input" id="radio2" name={index} defaultValue="option2" />D. {item.answer[3].title}
                                 </label>
                             </div>
                         </div>

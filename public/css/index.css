@@ -74,3 +74,12 @@ body {
   transform: translate(-50%, -50%);
   padding-top: 10px;
 }
+
+.list-contrainer{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.add-contrainer{
+  padding-left: 70px;
+  padding-right: 70px;
+}
