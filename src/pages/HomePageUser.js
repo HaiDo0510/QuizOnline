@@ -6,19 +6,16 @@ import DoQuiz from '../components/Content/DoQuiz';
 import PageContentUser from '../components/Content/PageContentUser';
 import SidebarMenu from '../components/Navbar/SidebarMenu';
 import { Link } from 'react-router-dom';
+import ListTest from '../components/Content/ListTest';
 
 class HomePageUser extends React.Component {
 
     componentDidMount() {
-        var roles = localStorage.getItem("roles");
+        let roles = localStorage.getItem("roles");
         if (roles === 'ROLE_USER') {
-            toast.success("Đăng nhập thành công");
-            // console.log(localStorage.getItem("data"));
-            // console.log(localStorage.getItem("email"));
-            // console.log(localStorage.getItem("accessToken"));
-            // console.log(localStorage.getItem("roles"));
+            toast.success('Hello ' + localStorage.getItem('username'));
         } else {
-            // window.location.href = '/';
+            window.location.href = '/';
         }
     }
 
@@ -31,7 +28,7 @@ class HomePageUser extends React.Component {
                     <div className="w3-hide-large" style={{ marginTop: '83px' }} />
                     <header className="w3-xlarge">
                         <div className="w3-bar w3-white w3-padding w3-card" style={{ letterSpacing: '2px' }}>
-                            <a href="#" className="w3-bar-item w3-button btn">Quiz Online</a>
+                            <Link to={'/user'} className="w3-bar-item w3-button btn">Quiz Online</Link>
                             {/* Right-sided navbar links. Hide them on small screens */}
                             <div className="w3-hide-small">
                                 <a href="#" className="w3-bar-item w3-button btn">Basic</a>
@@ -43,9 +40,8 @@ class HomePageUser extends React.Component {
                     </header>
                     <Routes>
                         <Route path='' element={<PageContentUser />} />
-                    </Routes>
-                    <Routes>
-                        <Route path='quiz' element={<DoQuiz />} />
+                        <Route path='doQuiz' element={<DoQuiz />} />
+                        <Route path='listTest' element={<ListTest/>}/>
                     </Routes>
                 </div>
             </div >

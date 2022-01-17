@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { api_createUser } from '../../actions/API_User';
 import { withRouter } from '../../components/WithRouter';
+import * as Constant from '../../Constant'
+import { toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
+import { getIdByQueryParam } from '../../common/Utils';
 
-class AddUser extends React.Component {
+class UpdateUser extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            id: "",
             username: "",
             email: "",
             password: "",
@@ -28,6 +33,26 @@ class AddUser extends React.Component {
         this.router = this.router.bind(this);
     };
 
+    componentDidMount() {
+        let query = window.location.search;
+        let userId = getIdByQueryParam(query);
+        axios({
+            method: 'GET',
+            headers: Constant.HEADER_API_TOKEN,
+            url: Constant.API_LISTUSER + '/' + userId,
+        }).then(res => {
+            this.setState({
+                id: res.data.id,
+                username: res.data.username,
+                email: res.data.email,
+                roleId: res.data.roleDto.id,
+                status: res.data.status
+            })
+        }).catch((error) => {
+            toast.warning(error.response.data.message);
+        });
+    }
+
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -40,14 +65,12 @@ class AddUser extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const userDto = {
+            id: this.state.id,
             username: this.state.username,
-            email: this.state.email,
-            password: this.state.password,
             roleId: this.state.roleId,
             status: this.state.status
         };
         api_createUser(userDto);
-        // this.router('/admin/listUser');
     };
 
     router(url) {
@@ -58,27 +81,27 @@ class AddUser extends React.Component {
         return (
             <div className="container add-contrainer">
                 <div className="table table-responsive w3-panel">
-                    <h2 className='w3-center w3-monospace'>Add User</h2>
+                    <h2 className='w3-center w3-monospace'>Update User</h2>
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="username" className='font-weight-bold'>UserName:</label>
-                            <input type="username" className="form-control" id="username" placeholder="Enter email" name="username" onChange={this.handleInputChange} />
+                            <input type="username" className="form-control" id="username" placeholder="Enter email" name="username" onChange={this.handleInputChange} value={this.state.username} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="email" className='font-weight-bold'>Email:</label>
-                            <input type="email" className="form-control" id="email" placeholder="Enter password" name="email" onChange={this.handleInputChange} />
+                            <input type="email" className="form-control" id="email" placeholder="Enter password" name="email" onChange={this.handleInputChange} value={this.state.email} disabled />
                         </div>
                         <div className="form-group">
                             <label htmlFor="password" className='font-weight-bold'>Password:</label>
-                            <input type="password" className="form-control" id="password" placeholder="Enter password" name="password" onChange={this.handleInputChange} />
+                            <input type="password" className="form-control" id="password" placeholder="*******" name="password" onChange={this.handleInputChange} disabled />
                         </div>
                         <div className="form-group">
                             <label htmlFor="repassword" className='font-weight-bold'>RePassword:</label>
-                            <input type="password" className="form-control" id="repassword" placeholder="Enter repassword" name="password" onChange={this.handleInputChange} />
+                            <input type="repassword" className="form-control" id="repassword" placeholder="*******" name="password" onChange={this.handleInputChange} disabled />
                         </div>
                         <div className="form-group">
                             <label htmlFor="sel1" className='font-weight-bold'>Role:</label>
-                            <select className="form-control" id="role" name="roleId" onChange={this.handleInputChange}>
+                            <select className="form-control" id="role" name="roleId" onChange={this.handleInputChange} value={this.state.roleId}>
                                 {this.state.role.map((item, index) => (
                                     <option key={index} className='w3-panel' value={item.id}>{item.roleName}</option>
                                 ))}
@@ -91,7 +114,7 @@ class AddUser extends React.Component {
                                 <option className='w3-panel' value={false}>{'Deactive'}</option>
                             </select>
                         </div>
-                        <button type="submit" className="btn btn-success">Submit</button>
+                        <button type="submit" className="btn btn-success">Update</button>
                     </form>
                 </div>
             </div>
@@ -99,4 +122,4 @@ class AddUser extends React.Component {
     }
 }
 
-export default withRouter(AddUser);
+export default withRouter(UpdateUser);

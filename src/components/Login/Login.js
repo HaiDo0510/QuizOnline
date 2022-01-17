@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import * as API from '../../actions/API_Auth';
+import { withRouter } from '../../components/WithRouter';
+import { toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 class Login extends React.Component {
     constructor(props) {
@@ -8,7 +11,12 @@ class Login extends React.Component {
             email: "",
             password: ""
         };
+        this.router = this.router.bind(this);
     };
+
+    router(url) {
+        this.props.navigate(url);
+    }
 
     handleInputChange = (event) => {
         const target = event.target;
@@ -26,7 +34,28 @@ class Login extends React.Component {
             email: this.state.email,
             password: this.state.password
         };
-        API.api_login(loginDto);
+        API.api_login(loginDto).then(res => {
+            const roles = res.data.roles[0].authority;
+            const email = res.data.email;
+            const username = res.data.username;
+            const accessToken = res.data.accessToken;
+            localStorage.setItem("email", email);
+            localStorage.setItem("username", username);
+            localStorage.setItem("roles", roles);
+            localStorage.setItem("accessToken", accessToken);
+            if (roles === "ROLE_ADMIN") {
+                // this.router("/admin");
+                window.location.href = '/admin';
+            }
+            if (roles === "ROLE_USER") {
+                // this.router("/user");
+                window.location.href = '/user';
+            }
+            
+        }).catch((error) => {
+            toast.warning('Email or password Invalid !');
+            console.log(error);
+        })
 
     };
 
@@ -78,4 +107,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

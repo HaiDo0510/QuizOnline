@@ -46,6 +46,48 @@ class DoQuiz extends React.Component {
                             title: "nuxxxx"
                         }
                     ]
+                },
+                {
+                    id: 3,
+                    title: "Java là gì",
+                    answer: [
+                        {
+                            id: 1,
+                            title: "ngôn ngữ"
+                        },
+                        {
+                            id: 2,
+                            title: "JAV"
+                        },
+                        {
+                            id: 3,
+                            title: "lập trình"
+                        }, {
+                            id: 4,
+                            title: "xxxx"
+                        }
+                    ]
+                },
+                {
+                    id: 4,
+                    title: "Hello world",
+                    answer: [
+                        {
+                            id: 1,
+                            title: "sout"
+                        },
+                        {
+                            id: 2,
+                            title: "print"
+                        },
+                        {
+                            id: 3,
+                            title: "printf"
+                        }, {
+                            id: 4,
+                            title: "console.log()"
+                        }
+                    ]
                 }
             ],
             time: {
@@ -114,7 +156,9 @@ class DoQuiz extends React.Component {
     render() {
         return (
             <div>
-                <div></div>
+                <div className="table table-responsive w3-panel">
+                    <h5 className='w3-left w3-opacity'>Java Program \ Thread \ Thread Safe</h5>
+                </div>
                 <button type='button' onClick={this.startTimer} className="btn w3-pink mx-auto d-flex my-4 mx-4 btn-lg"> Start Exam </button>
                 <div className="app">
                     <div className='stopwatch-card'>
@@ -124,7 +168,7 @@ class DoQuiz extends React.Component {
                 <form>
                     {this.state.test.map((item, index) => (
                         <div className="container mx-auto w-75 p-4 my-4 border" key={index}>
-                            <h2>{index+1}. {item.title}</h2>
+                            <h2>{index + 1}. {item.title}</h2>
                             <p>The form below contains three radio buttons. The first option is checked by default, and the last option is disabled:</p>
                             <div className="form-check">
                                 <label className="form-check-label" htmlFor="radio1">

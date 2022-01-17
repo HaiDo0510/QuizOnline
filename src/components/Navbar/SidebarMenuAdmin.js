@@ -17,7 +17,7 @@ class SidebarMenuAdmin extends React.Component {
                             <img src={"https://www.w3schools.com/w3images/avatar2.png"} className="w3-circle w3-margin-right" style={{ width: '46px' }} />
                         </div>
                         <div className="w3-col s8 w3-bar">
-                            <span>Welcome, <strong>HaiDo</strong></span><br />
+                            <span>Welcome, <strong>{localStorage.getItem('username')}</strong></span><br />
                             <a href="#" className="w3-bar-item w3-button"><i className="fa fa-envelope" /></a>
                             <a href="#" className="w3-bar-item w3-button"><i className="fa fa-user" /></a>
                             <a href="#" className="w3-bar-item w3-button"><i className="fa fa-cog" /></a>
@@ -30,10 +30,10 @@ class SidebarMenuAdmin extends React.Component {
                     <div className="w3-bar-block">
                         <a href="#" className="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onClick={w3_close} title="close menu"><i className="fa fa-remove fa-fw" />&nbsp; Close Menu</a>
                         <a href="#" className="w3-bar-item w3-button w3-padding w3-blue"><i className="fa fa-users fa-fw" />&nbsp; Overview</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-eye fa-fw" />&nbsp; User</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-users fa-fw" />&nbsp; Course</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bullseye fa-fw" />&nbsp; Subject</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bell fa-fw" />&nbsp; Test</a>
+                        <Link to={'/admin/listUser'} className="w3-bar-item w3-button w3-padding"><i className="fa fa-eye fa-fw" />&nbsp; User</Link>
+                        <Link to={'/admin/listCourse'} className="w3-bar-item w3-button w3-padding"><i className="fa fa-users fa-fw" />&nbsp; Course</Link>
+                        <Link to={'/admin/listSubject'} className="w3-bar-item w3-button w3-padding"><i className="fa fa-bullseye fa-fw" />&nbsp; Subject</Link>
+                        <Link to={'/admin/listTest'} className="w3-bar-item w3-button w3-padding"><i className="fa fa-bell fa-fw" />&nbsp; Test</Link>
                         <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bank fa-fw" />&nbsp; Exam</a>
                         <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-history fa-fw" />&nbsp; History</a>
                         <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-cog fa-fw" />&nbsp; Settings</a><br /><br />

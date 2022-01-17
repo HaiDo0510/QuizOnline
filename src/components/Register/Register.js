@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import * as API from '../../actions/API_Auth';
+import { toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 class Register extends React.Component {
     constructor(props) {
@@ -29,6 +31,7 @@ class Register extends React.Component {
             password: this.state.password
         };
         API.api_register(registerDto);
+        toast.warn("Please wait a minute !");
     };
 
 

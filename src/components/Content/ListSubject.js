@@ -1,43 +1,44 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { api_listUser } from '../../actions/API_User';
+import { api_listSubject } from '../../actions/API_Subject';
 import axios from 'axios';
 import * as Constant from '../../Constant'
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 
-class ListUser extends React.Component {
+class ListSubject extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            users: []
+            subjects: []
         };
     };
 
     componentDidMount() {
-        api_listUser().then(data => {
+        api_listSubject().then(data => {
             this.setState({
-                users: data
+                subjects: data
             });
+            console.log(this.state.subjects);
         }).catch((error) => {
             console.log('Error', error);
         });
     }
 
-    deleteUser(userId) {
+    deleteCourse(subjectId) {
         if (window.confirm('Do you want to Delete')) {
             axios({
                 method: 'DELETE',
                 headers: Constant.HEADER_API_TOKEN,
-                url: Constant.API_LISTUSER + '/' + userId,
+                url: Constant.API_LISTSUBJECT + '/' + subjectId,
             }).then(res => {
-                toast.success('Delete User Success !');
-                var filterResult = this.state.users.filter((element) => {
-                    return element.id !== userId;
+                toast.success('Delete Subject Success !');
+                var filterResult = this.state.subjects.filter((element) => {
+                    return element.id !== subjectId;
                 });
                 this.setState({
-                    users: filterResult
+                    subjects: filterResult
                 });
             }).catch((error) => {
                 toast.warning(error.response.data.message);
@@ -45,18 +46,17 @@ class ListUser extends React.Component {
         }
     }
 
-
     render() {
         return (
             <div className="container list-contrainer">
                 <div className="table table-responsive w3-panel">
-                    <h2 className='w3-center w3-monospace'>List User</h2>
+                    <h2 className='w3-center w3-monospace'>List Subject</h2>
                     <div className="">
                         <div className="w3-col" style={{ width: '75%' }}><p></p></div>
-                        <Link to={'/admin/addUser'}><button className="btn btn-success w3-col" style={{ width: '15%' }}>Add New</button></Link>
+                        <Link to={'/admin/addSubject'}><button className="btn btn-success w3-col" style={{ width: '15%' }}>Add New</button></Link>
                         <div className="w3-col" style={{ width: '20%' }}><p></p></div>
                     </div>
-                    <form action="/action_page.php" className='w3-margin my-4 mx-4 w3-padding-16'>
+                    <form action="#" className='w3-margin my-4 mx-4 w3-padding-16'>
                         <div className="input-group">
                             <input type="text" className="form-control" placeholder="Search" name="search" />
                             <div className="input-group-btn">
@@ -68,22 +68,20 @@ class ListUser extends React.Component {
                         <thead className='w3-center'>
                             <tr className="w3-blue-grey">
                                 <th>No.</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Role</th>
+                                <th>Subject Name</th>
+                                <th>Coures Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody className='w3-center'>
-                            {this.state.users.map((item, index) => (
+                            {this.state.subjects.map((item, index) => (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
-                                    <td>{item.username}</td>
-                                    <td>{item.email}</td>
-                                    <td>{item.roleDto.roleName}</td>
+                                    <td>{item.subjectName}</td>
+                                    <td>{item.courseDto.courseName}</td>
                                     <td style={{ width: '15%' }}>
-                                        <Link to={'/admin/UpdateUser?id='+item.id}><i className="fas fa-edit w3-margin-right"></i></Link>
-                                        <a href='#' onClick={() => { this.deleteUser(item.id) }} ><i className="fas fa-trash w3-margin-left text-danger"></i></a>
+                                        <a href='#'><i className="fas fa-edit w3-margin-right"></i></a>
+                                        <a href='#' onClick={() => { this.deleteCourse(item.id) }}><i className="fas fa-trash w3-margin-left text-danger"></i></a>
                                     </td>
                                 </tr>
                             ))}
@@ -102,4 +100,4 @@ class ListUser extends React.Component {
     }
 }
 
-export default ListUser;
+export default ListSubject;
