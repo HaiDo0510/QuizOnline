@@ -23,4 +23,5 @@ export const API_LOGIN = 'http://localhost:8080/auth/login';
 export const API_LISTUSER = 'http://localhost:8080/api/user';
 export const API_LISTCOURSE = 'http://localhost:8080/api/course';
 export const API_LISTSUBJECT = 'http://localhost:8080/api/subject';
-export const API_LISTTEST = 'http://localhost:8080/api/test/all/1';
+export const API_LISTTEST = 'http://localhost:8080/api/test';
+export const API_EXAM = 'http://localhost:8080/api/exam';

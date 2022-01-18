@@ -36,9 +36,11 @@ class Login extends React.Component {
         };
         API.api_login(loginDto).then(res => {
             const roles = res.data.roles[0].authority;
+            const userId = res.data.userId;
             const email = res.data.email;
             const username = res.data.username;
             const accessToken = res.data.accessToken;
+            localStorage.setItem("userId", userId);
             localStorage.setItem("email", email);
             localStorage.setItem("username", username);
             localStorage.setItem("roles", roles);

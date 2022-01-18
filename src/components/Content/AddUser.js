@@ -86,8 +86,8 @@ class AddUser extends React.Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="sel1" className='font-weight-bold'>Status:</label>
-                            <select className="form-control" id="status" name="status" onChange={this.handleInputChange}>
-                                <option className='w3-panel' value={true}>{'Active'}</option>
+                            <select className="form-control" id="status" name="status" onChange={this.handleInputChange} value={this.state.status}>
+                                <option className='w3-panel' value={true}>{ 'Active'}</option>
                                 <option className='w3-panel' value={false}>{'Deactive'}</option>
                             </select>
                         </div>

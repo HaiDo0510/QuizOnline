@@ -41,7 +41,7 @@ class ListTestAdmin extends React.Component {
                         <Link to={'/admin/addTest'}><button className="btn btn-success w3-col" style={{ width: '15%' }}>Add New</button></Link>
                         <div className="w3-col" style={{ width: '20%' }}><p></p></div>
                     </div>
-                    <form action="/action_page.php" className='w3-margin my-4 mx-4 w3-padding-16'>
+                    <form action="#" className='w3-margin my-4 mx-4 w3-padding-16'>
                         <div className="input-group">
                             <input type="text" className="form-control" placeholder="Search" name="search" />
                             <div className="input-group-btn">
@@ -64,7 +64,7 @@ class ListTestAdmin extends React.Component {
                                 <tr key={index}>
                                     <td style={{ width: '10%' }}>{index + 1}</td>
                                     <td>{item.title}</td>
-                                    <td>{'05:00'}</td>
+                                    <td>{item.duration.toString().padStart(2, '0')}:{"0".toString().padStart(2, '0')}</td>
                                     <td style={{ width: '15%' }}>{item.testLevel == 1 ? 'Basic' : 'Avance'}</td>
                                     <td style={{ width: '15%' }}>
                                         <a href='#'><i className="fas fa-edit w3-margin-right"></i></a>

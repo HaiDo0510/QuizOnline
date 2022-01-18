@@ -70,7 +70,16 @@ class UpdateUser extends React.Component {
             roleId: this.state.roleId,
             status: this.state.status
         };
-        api_createUser(userDto);
+        axios({
+            method: 'PUT',
+            headers: Constant.HEADER_API_TOKEN,
+            url: Constant.API_LISTUSER+'/'+userDto.id,
+            data: userDto
+        }).then(res => {
+            toast.success('Update User Success !');
+        }).catch((error) => {
+            toast.warning(error.response.data.message);
+        });
     };
 
     router(url) {
@@ -109,7 +118,7 @@ class UpdateUser extends React.Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="sel1" className='font-weight-bold'>Status:</label>
-                            <select className="form-control" id="status" name="status" onChange={this.handleInputChange}>
+                            <select className="form-control" id="status" name="status" onChange={this.handleInputChange} value={this.state.status}>
                                 <option className='w3-panel' value={true}>{'Active'}</option>
                                 <option className='w3-panel' value={false}>{'Deactive'}</option>
                             </select>

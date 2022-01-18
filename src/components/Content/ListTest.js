@@ -13,27 +13,45 @@ class ListTest extends React.Component {
         this.state = {
             tests: []
         };
-        console.log('search: ',window.location.search);
     };
 
     componentDidMount() {
         let query = window.location.search;
         let index = query.indexOf("=");
-        let id = query.slice(index+1);
-        api_listTest().then(data => {
+        let id = query.slice(index + 1);
+        axios({
+            method: 'GET',
+            headers: Constant.HEADER_API_TOKEN,
+            url: Constant.API_LISTTEST + '/all/' + id
+        }).then(res => {
             this.setState({
-                tests: data
+                tests: res.data
             });
         }).catch((error) => {
             console.log('Error', error);
         });
     }
 
+    // shouldComponentUpdate() {
+    //     console.log('shouldComponentUpdate');
+    //     return true;
+    // }
+
+    // componentWillUpdate() {
+    //     console.log('componentWillUpdate');
+    // }
+
+    // componentDidUpdate() {
+    //     console.log('componentDidUpdate');
+    // }
+
+
+
     render() {
         return (
             <div className="container list-contrainer">
                 <div className="table table-responsive w3-panel">
-                    <h4 className='w3-left w3-opacity'>Java Program \ Thread </h4>
+                    <h4 className='w3-left w3-opacity'>{this.state.tests[0] && this.state.tests[0].subjectResponse && this.state.tests[0].subjectResponse.courseDto && this.state.tests[0].subjectResponse.courseDto.courseName} \ {this.state.tests[0] && this.state.tests[0].subjectResponse && this.state.tests[0].subjectResponse.subjectName} </h4>
                     <br />
                     <form action="/action_page.php" className='w3-margin my-4 mx-4 w3-padding-16'>
                         <div className="input-group">
@@ -58,10 +76,10 @@ class ListTest extends React.Component {
                                 <tr key={index}>
                                     <td style={{ width: '10%' }}>{index + 1}</td>
                                     <td>{item.title}</td>
-                                    <td>{'05:00'}</td>
+                                    <td>{item.duration.toString().padStart(2, '0')}:{"0".toString().padStart(2, '0')}</td>
                                     <td style={{ width: '15%' }}>{item.testLevel == 1 ? 'Basic' : 'Avance'}</td>
                                     <td style={{ width: '20%' }}>
-                                        <Link className="" to={'/user/doQuiz'}><i className="fas fa-sign-in-alt"></i> Do Test</Link>
+                                        <Link className="" to={'/user/doQuiz?id=' + item.id}><i className="fas fa-sign-in-alt"></i> Do Test</Link>
                                     </td>
                                 </tr>
                             ))}
