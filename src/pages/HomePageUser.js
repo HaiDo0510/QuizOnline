@@ -7,6 +7,11 @@ import PageContentUser from '../components/Content/PageContentUser';
 import SidebarMenu from '../components/Navbar/SidebarMenu';
 import { Link } from 'react-router-dom';
 import ListTest from '../components/Content/ListTest';
+import ResultExam from '../components/Content/ResultExam';
+import ListGame from '../components/Content/ListGame';
+import Game_Flappy from '../components/Content/Game_Flappy';
+import Game_Dino from '../components/Content/Game_Dino';
+import Game_GTA from '../components/Content/Game_GTA';
 
 class HomePageUser extends React.Component {
 
@@ -31,17 +36,22 @@ class HomePageUser extends React.Component {
                             <Link to={'/user'} className="w3-bar-item w3-button btn">Quiz Online</Link>
                             {/* Right-sided navbar links. Hide them on small screens */}
                             <div className="w3-hide-small">
-                                <a href="#" className="w3-bar-item w3-button btn">Basic</a>
-                                <a href="#" className="w3-bar-item w3-button btn">Advance</a>
+                                <Link to="/user/listGame" className="w3-bar-item w3-button btn">Game</Link>
                                 <a href="#" className="w3-bar-item w3-button btn">History Exam</a>
                                 <Link to="/" className="w3-bar-item w3-button btn btn-info w3-right">Logout</Link>
+                                <a href="#" className="w3-bar-item w3-button btn w3-right font-weight-bold">{localStorage.getItem("username")}</a>
                             </div>
                         </div>
                     </header>
                     <Routes>
                         <Route path='' element={<PageContentUser />} />
                         <Route path='doQuiz' element={<DoQuiz />} />
-                        <Route path='listTest' element={<ListTest/>}/>
+                        <Route path='listTest' element={<ListTest />} />
+                        <Route path='resultExam' element={<ResultExam />} />
+                        <Route path='listGame' element={<ListGame />} />
+                        <Route path='GameFlappyBird' element={<Game_Flappy />} />
+                        <Route path='GameDino' element={<Game_Dino />} />
+                        <Route path='GameGTA' element={<Game_GTA />} />
                     </Routes>
                 </div>
             </div >

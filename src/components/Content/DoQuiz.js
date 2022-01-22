@@ -4,6 +4,7 @@ import * as Constant from '../../Constant'
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
+import { withRouter } from '../../components/WithRouter';
 
 class DoQuiz extends React.Component {
     constructor() {
@@ -22,6 +23,7 @@ class DoQuiz extends React.Component {
             timer: null
         };
         this.startTimer = this.start.bind(this);
+        this.router = this.router.bind(this);
     }
 
     componentDidMount() {
@@ -139,16 +141,21 @@ class DoQuiz extends React.Component {
             data: testCheckDto
         }).then(res => {
             localStorage.setItem("resultExam", res.data.mark.toFixed(2));
+            this.router('/user/resultExam');
             // toast.success('Send Answer Success!: ' + res.data.mark.toFixed(2));
         }).catch((error) => {
             toast.warning(error.response.data.message);
         });
     };
 
+    router(url) {
+        this.props.navigate(url);
+    }
+
     render() {
         return (
             <div>
-                <div className="modal" id="myModal" aria-hidden="false">
+                {/* <div className="modal" id="myModal" aria-hidden="false">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header w3-center">
@@ -163,7 +170,7 @@ class DoQuiz extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="table table-responsive w3-panel">
                     <h5 className='w3-left w3-opacity'>{this.state.test.subjectResponse && this.state.test.subjectResponse.courseDto && this.state.test.subjectResponse.courseDto.courseName} \ {this.state.test.subjectResponse && this.state.test.subjectResponse.subjectName} \ {this.state.test.title}</h5>
                 </div>
@@ -211,5 +218,5 @@ class DoQuiz extends React.Component {
     }
 }
 
-export default DoQuiz;
+export default withRouter(DoQuiz);
 

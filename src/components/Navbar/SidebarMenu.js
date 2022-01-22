@@ -43,6 +43,13 @@ class SidebarMenu extends React.Component {
                             </div>
                         ))}
                     </div>
+                    <div className="w3-display-container w3-center">
+                        <img src={require("../../image/logo11.png")} style={{ width: '50%' }} />
+                    </div>
+                    <br></br>
+                    <div className="w3-display-container w3-center">
+                        <img src={require("../../image/logo10.png")} style={{ width: '70%' }} />
+                    </div>
                 </nav>
                 {/* Top menu on small screens */}
                 <header className="w3-bar w3-top w3-hide-large w3-amber w3-xlarge">
