@@ -34,8 +34,8 @@ class SidebarMenuAdmin extends React.Component {
                         <Link to={'/admin/listCourse'} className="w3-bar-item w3-button w3-padding"><i className="fa fa-users fa-fw" />&nbsp; Course</Link>
                         <Link to={'/admin/listSubject'} className="w3-bar-item w3-button w3-padding"><i className="fa fa-bullseye fa-fw" />&nbsp; Subject</Link>
                         <Link to={'/admin/listTest'} className="w3-bar-item w3-button w3-padding"><i className="fa fa-bell fa-fw" />&nbsp; Test</Link>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bank fa-fw" />&nbsp; Exam</a>
-                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-history fa-fw" />&nbsp; History</a>
+                        <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-bank fa-fw" />&nbsp; Games</a>
+                        <Link to={'/admin/historyExam'} className="w3-bar-item w3-button w3-padding"><i className="fa fa-history fa-fw" />&nbsp; History Exam</Link>
                         <a href="#" className="w3-bar-item w3-button w3-padding"><i className="fa fa-cog fa-fw" />&nbsp; Settings</a><br /><br />
                     </div>
                 </nav>

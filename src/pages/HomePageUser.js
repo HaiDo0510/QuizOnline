@@ -12,6 +12,8 @@ import ListGame from '../components/Content/ListGame';
 import Game_Flappy from '../components/Content/Game_Flappy';
 import Game_Dino from '../components/Content/Game_Dino';
 import Game_GTA from '../components/Content/Game_GTA';
+import HistoryExam from '../components/Content/HistoryExam';
+import Game_Bia from '../components/Content/Game_Bia';
 
 class HomePageUser extends React.Component {
 
@@ -37,7 +39,7 @@ class HomePageUser extends React.Component {
                             {/* Right-sided navbar links. Hide them on small screens */}
                             <div className="w3-hide-small">
                                 <Link to="/user/listGame" className="w3-bar-item w3-button btn">Game</Link>
-                                <a href="#" className="w3-bar-item w3-button btn">History Exam</a>
+                                <Link to="/user/historyExam" className="w3-bar-item w3-button btn">History Exam</Link>
                                 <Link to="/" className="w3-bar-item w3-button btn btn-info w3-right">Logout</Link>
                                 <a href="#" className="w3-bar-item w3-button btn w3-right font-weight-bold">{localStorage.getItem("username")}</a>
                             </div>
@@ -47,11 +49,13 @@ class HomePageUser extends React.Component {
                         <Route path='' element={<PageContentUser />} />
                         <Route path='doQuiz' element={<DoQuiz />} />
                         <Route path='listTest' element={<ListTest />} />
+                        <Route path='historyExam' element={<HistoryExam />} />
                         <Route path='resultExam' element={<ResultExam />} />
                         <Route path='listGame' element={<ListGame />} />
                         <Route path='GameFlappyBird' element={<Game_Flappy />} />
                         <Route path='GameDino' element={<Game_Dino />} />
                         <Route path='GameGTA' element={<Game_GTA />} />
+                        <Route path='GameBia' element={<Game_Bia />} />
                     </Routes>
                 </div>
             </div >

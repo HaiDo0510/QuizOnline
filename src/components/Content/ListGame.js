@@ -87,7 +87,7 @@ class ListGame extends React.Component {
                                 <div className="w3-display-container">
                                     <img src={require("../../image/Logo_BanBia.png")} style={{ width: '100%' }} />
                                     <div className="w3-display-middle w3-display-hover">
-                                        <button className="w3-button w3-orange font-weight-bold">Play <i className="fas fa-gamepad" /></button>
+                                        <Link to={'/user/GameBia'} className="w3-button w3-orange font-weight-bold">Play <i className="fas fa-gamepad" /></Link>
                                     </div>
                                 </div>
                                 <p>Pointer<br /><b>$19.99</b></p>

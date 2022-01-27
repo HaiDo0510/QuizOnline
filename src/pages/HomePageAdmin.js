@@ -13,6 +13,7 @@ import AddCourse from '../components/Content/AddCourse';
 import UpdateUser from '../components/Content/UpdateUser';
 import ListTestAdmin from '../components/Content/ListTestAdmin';
 import AddTest from '../components/Content/AddTest';
+import ListHistoryExam from '../components/Content/ListHistoryExam';
 
 class HomePageAdmin extends React.Component {
 
@@ -44,6 +45,7 @@ class HomePageAdmin extends React.Component {
                             <Route path='addSubject/*' element={<AddSubject />} />
                             <Route path='listTest/*' element={<ListTestAdmin />} />
                             <Route path='addTest/*' element={<AddTest />} />
+                            <Route path='historyExam/*' element={<ListHistoryExam />} />
                         </Routes>
                     </div>
                 </div>

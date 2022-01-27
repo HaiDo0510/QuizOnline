@@ -121,7 +121,7 @@ class DoQuiz extends React.Component {
             id: name,
             answerId: value
         };
-        var question = this.state.questions
+        var question = this.state.questions;
         this.setState({
             questions: question.concat(QuestionCheck)
         });
