@@ -14,6 +14,8 @@ import Game_Dino from '../components/Content/Game_Dino';
 import Game_GTA from '../components/Content/Game_GTA';
 import HistoryExam from '../components/Content/HistoryExam';
 import Game_Bia from '../components/Content/Game_Bia';
+import HistoryExamAVG from '../components/Content/HistoryExamAVG';
+import CheckQuiz from '../components/Content/CheckQuiz';
 
 class HomePageUser extends React.Component {
 
@@ -39,7 +41,7 @@ class HomePageUser extends React.Component {
                             {/* Right-sided navbar links. Hide them on small screens */}
                             <div className="w3-hide-small">
                                 <Link to="/user/listGame" className="w3-bar-item w3-button btn">Game</Link>
-                                <Link to="/user/historyExam" className="w3-bar-item w3-button btn">History Exam</Link>
+                                <Link to="/user/historyExamAVG" className="w3-bar-item w3-button btn">History Exam</Link>
                                 <Link to="/" className="w3-bar-item w3-button btn btn-info w3-right">Logout</Link>
                                 <a href="#" className="w3-bar-item w3-button btn w3-right font-weight-bold">{localStorage.getItem("username")}</a>
                             </div>
@@ -48,8 +50,10 @@ class HomePageUser extends React.Component {
                     <Routes>
                         <Route path='' element={<PageContentUser />} />
                         <Route path='doQuiz' element={<DoQuiz />} />
+                        <Route path='checkQuiz' element={<CheckQuiz />} />
                         <Route path='listTest' element={<ListTest />} />
                         <Route path='historyExam' element={<HistoryExam />} />
+                        <Route path='historyExamAVG' element={<HistoryExamAVG />} />
                         <Route path='resultExam' element={<ResultExam />} />
                         <Route path='listGame' element={<ListGame />} />
                         <Route path='GameFlappyBird' element={<Game_Flappy />} />

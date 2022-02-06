@@ -116,19 +116,19 @@ class AddTest extends React.Component {
         listAnswerDtos: [
           {
             answerText: this.state.ansA[i],
-            isCorrect: "true"
+            isCorrect: this.state.correct[i] === 'A' ? "true" : "false"
           },
           {
             answerText: this.state.ansB[i],
-            isCorrect: "false"
+            isCorrect: this.state.correct[i] === 'B' ? "true" : "false"
           },
           {
             answerText: this.state.ansC[i],
-            isCorrect: "false"
+            isCorrect: this.state.correct[i] === 'C' ? "true" : "false"
           },
           {
             answerText: this.state.ansD[i],
-            isCorrect: "false"
+            isCorrect: this.state.correct[i] === 'D' ? "true" : "false"
           },
         ]
       };
@@ -143,7 +143,7 @@ class AddTest extends React.Component {
     axios({
       method: 'POST',
       headers: Constant.HEADER_API_TOKEN,
-      url: Constant.API_LISTTEST+'/add',
+      url: Constant.API_LISTTEST + '/add',
       data: testFull
     }).then(res => {
       toast.success('Add Test Success!');
